@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+		<h1>Rango says...hello
+		{% if user.is_authenticated %}
+			{{ user.username }}
+		{% else %}
+			world!
+		{% endif %}
+		</h1>
+		
+		
+		<img src="{% static "rango.jpg" %}" alt="Picture of Rango"/>
+		
+		<div>
+			<h1>Categories</h1>
+			
+			<div>
+				{% if categories %}
+					<ul>
+						{% for category in categories %}
+							<li>
+								<a href="/rango/category/{{category.name}}">
+									{{category.name}}
+								</a>
+							</li>		
+						{% endfor %}	
+					</ul>
+				{% else %}
+					<strong>There are not categories present.</strong>
+				{% endif %}
+			</div>
+		</div>
+		
+		<div>
+			<h1>5 Most viewed pages</h1>
+			
+			<div>
+				{% if most_viewed %}
+				<ul>
+					{% for page in most_viewed %}
+						<li>
+							<a href="{{page.url}}" target='_blank'>
+								{{page.title}}
+							</a>
+							- Viewed {{ page.views }} times
+						</li>	
+					{% endfor %}
+				</ul>	
+				{% else %}
+					No pages
+				{% endif %}
+			</div>
+		</div>
+{% endblock %}
+	
