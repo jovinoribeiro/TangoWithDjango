@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template.context import RequestContext
@@ -59,6 +60,9 @@ def user_login(request):
     else:
         return render(request, 'leialater/login.html', {})
          
-
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/leialater/')
     
 
