@@ -16,6 +16,7 @@ class CategoryForm(forms.ModelForm):
     
     class Meta:
         model = Category
+        fields = ('name', 'view', 'like')
         
 class PageForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of page.")

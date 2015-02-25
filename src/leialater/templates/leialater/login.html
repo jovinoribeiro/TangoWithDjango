@@ -1,0 +1,18 @@
+{% extends 'base_leialater.html' %}
+{% load staticfiles %}
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+	<h1>Login with LeiaLater</h1>
+	<form id="login_form" method="post" action="/leialater/login/">
+		{% csrf_token %}
+		Username: <input type="text" name="username" value="" size="50"/>
+		<br />
+		Password: <input type="password" name="password" value="" size="50"/>
+		<br />
+		<div class="errorlist">
+			{{ login_error }}
+		</div>
+		<input type="submit" value="submit"/>
+	</form>	
+{% endblock %}

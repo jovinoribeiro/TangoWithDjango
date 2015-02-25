@@ -1,0 +1,17 @@
+{% extends 'base_front_page.html' %}
+{% load staticfiles %}
+{% block title %} Home{% endblock %}
+
+{% block body_block %}
+	<h1>Hello, leia later...</h1>
+	<p><img src="{% static 'images/rango.jpg' %}" alt='Our crazy mascot'"/>
+	<p>This is our main page. We will include all fun stuff here</p>
+	<p>
+		<h1>Existing Categories</h1>
+		{% csrf_token %}
+		{% for category in category_list %}
+			{{ category.name }} <br />
+		{% endfor %}
+	</p>
+{% endblock %} 
+	

@@ -1,0 +1,24 @@
+{% extends 'base_leialater.html' %} %}
+{% load staticfiles %}
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+	
+	<h1>Register with Leialater</h1>
+	{% if registered %}
+	LeiaLater says: <strong>thank you for registering!</strong>
+	<a href='/leialater/'>Return to homepage.</a><br />
+	{% else %}
+	Rango says: <strong>register here!</strong><br />
+	<form id="user_form" method="post" action="/leialater/register/" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ user_form.as_p }}
+		<hr/>
+		<!-- {{ profile_form.as_p }}  -->
+		
+		<input type="submit" name="submit" value="Register" />
+	
+	</form>
+	{% endif %}	
+{% endblock %}
+

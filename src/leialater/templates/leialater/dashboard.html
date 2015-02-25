@@ -1,0 +1,20 @@
+{% extends 'base_leialater.html' %}
+{% load staticfiles %}
+{% block title %} Home{% endblock %}
+
+{% block body_block %}
+	<h1>Dashboard</h1>
+	
+	<p>
+		<h1>Existing Categories</h1>
+		{% csrf_token %}
+		{% for bookmark in bookmark_list %}
+			{{ bookmark.title }} <br />
+			{{ bookmark.url }} <br />
+			{{ bookmark.summary }} <br />
+			{{ bookmark.date }}
+			<hr />
+		{% endfor %}
+	</p>
+{% endblock %} 
+	

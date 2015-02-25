@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'leialater',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -93,4 +94,6 @@ STATICFILES_DIRS = (
     STATIC_PATH,             
 )
 
-LOGIN_URL = '/rango/login'
+#===============================================================================
+# LOGIN_URL = '/rango/login'
+#===============================================================================

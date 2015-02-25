@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+import leialater
 
 
 urlpatterns = patterns('',
@@ -10,6 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^rango/', include('rango.urls')),
+    url(r'^leialater/', include('leialater.urls')),
 )
 
 if settings.DEBUG:
