@@ -2,19 +2,67 @@
 {% load staticfiles %}
 {% block title %} Home{% endblock %}
 
+<!--  block side_block 
+
+		<div class="col-sm-12 col-md-2">
+        	<h1>Dashboard</h2>
+        	<h5 style="font-weight:bold;">User: {{ user.username }}</h5>
+      	</div>		
+<div style="clear:both;"></div>
+
+ -->
+
+
 {% block body_block %}
-	<h1>Dashboard - LeiaLater</h1>
-	
-	<p>
-		<h1>Existing Categories</h1>
-		{% csrf_token %}
-		{% for bookmark in bookmark_list %}
-			{{ bookmark.title }} <br />
-			{{ bookmark.url }} <br />
-			{{ bookmark.summary }} <br />
-			{{ bookmark.date }}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 col-md-9">
+        	<h1>Favorite Links</h2>
+        	<h5><a href="/leialater/add_url/">Add New Link</a></h5>
+      	</div>	
+	</div>
+<hr />
+</div>
+{% csrf_token %}
+<div class="container">
+{% for bookmark in bookmark_list %}
+	<div class="row">
+		<div class="col-sm-9" col-md-12>
+			<ul>
+				<li class="b_title"><a href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a></li>
+				<li class="b_url"><a href="{{ bookmark.url }}" target="_blank">{{ bookmark.url }}</a></li>
+				<li class="b_summary"><span>Summary:</span> {{ bookmark.summary }}</li>
+				<li class="b_date">Date Added: {{ bookmark.date }}</li>
+			</ul>
 			<hr />
-		{% endfor %}
-	</p>
+		</div>
+	</div>
+{% endfor %}
+</div>	
+<style>
+	ul {
+		list-style-type:none;
+		padding:0; 
+		margin:0;
+	}	
+	ul li.b_title {
+		font-weight:bold;
+		font-size:25px;
+	}
+	ul li.b_url {
+		font-weight:bold;
+	}
+	ul li.b_date {
+		font-style:italic;
+		color:blue;
+		
+	}
+	ul li span {
+		font-weight:bold;
+	}
+</style>
+	
 {% endblock %} 
+
+
 	

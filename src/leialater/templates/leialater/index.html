@@ -3,15 +3,42 @@
 {% block title %} Home{% endblock %}
 
 {% block body_block %}
-	<h1>Hello, leia later...</h1>
-	<p><img src="{% static 'images/rango.jpg' %}" alt='Our crazy mascot'"/>
-	<p>This is our main page. We will include all fun stuff here</p>
-	<p>
-		<h1>Existing Categories</h1>
-		{% csrf_token %}
-		{% for category in category_list %}
-			{{ category.name }} <br />
-		{% endfor %}
-	</p>
+<div class="container">
+<!-- 	<div class="row text-center">
+		<div class="col-sm-12 col-md-12">
+        	<h2>Save, Save, Save It. Anywhere.</h2>
+      	</div>		
+	</div> -->
+	<div class="row text-center">
+		<div class="col-sm-12 col-md-6">
+        	<div class="col-sm-12">
+        	<h2>Save, Save, Save It. Anywhere.</h2>
+        		<p class="text-justify">
+        			With LeiaLater, you can save your favorite links from anywhere device you want, anytime you want.
+        			It is that simple! 
+        		</p>
+        	</div>
+      	</div>	   	
+      	<div class="col-sm-12 col-md-6">
+        	<div class="col-sm-12">
+        	<h2>Read, Read, Read It. Anywhere.</h2>
+        		<p class="text-justify">
+        			With LeiaLater, you can have your favorite links available for reading anytime you want, using any device
+        			you want. Didn't we say it was that simple?
+        		</p>
+        	</div>
+      	</div>
+      	<div style="clear:both;"></div>	
+		<hr />
+		<div class="col-sm-12 col-md-12">
+        	<h4>Create an account now and never lose track of those favorite links again!.</h4>
+      	</div>		
+
+	</div>
+	<div style="clear:both;"></div>
+	<div class="row">
+		<div class="col-sm-12 col-md-6">
+	</div>
+</div>
 {% endblock %} 
 	

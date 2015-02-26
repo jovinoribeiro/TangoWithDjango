@@ -3,16 +3,36 @@
 {% block title %}{{ category_name }}{% endblock %}
 
 {% block body_block %}
-	<h1>Login with LeiaLater</h1>
-	<form id="login_form" method="post" action="/leialater/login/">
-		{% csrf_token %}
-		Username: <input type="text" name="username" value="" size="50"/>
-		<br />
-		Password: <input type="password" name="password" value="" size="50"/>
-		<br />
-		<div class="errorlist">
-			{{ login_error }}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+	        	<h1>Login</h2>
+	      	</div>		
 		</div>
-		<input type="submit" value="submit"/>
-	</form>	
+		<div style="clear:both;"></div>
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<form id="login_form" method="post" action="/leialater/login/">
+					<div class="errorlist">
+							{{ login_error }}
+					</div>
+					{% csrf_token %}		  
+					<div class="form-group">
+					    <label for="username">Username</label>
+					    <input name="username" type="text" class="form-control" 
+					    	id="username" placeholder="Enter Your Name">
+				  	</div>
+				 	<div class="form-group">
+				    	<label for="password">Password</label>
+					    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+				  	</div>
+				  	<button type="submit" class="btn btn-primary">Submit</button>
+					
+				</form>
+      		</div>		
+		</div>
+	</div>
+
+
+	
 {% endblock %}

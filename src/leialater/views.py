@@ -4,7 +4,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template.context import RequestContext
 
-from leialater.forms import UserForm
+from leialater.forms import UserForm, BookmarkForm
 from leialater.models import Category, Bookmark
 from rango.forms import UserProfileForm
 
@@ -32,6 +32,10 @@ def register(request):
             user.set_password(user.password)
             user.save()
             registered = True
+            
+            user = authenticate(username=request.POST['username'], password=request.POST['password'])
+            login(request, user)
+            return HttpResponseRedirect('/leialater/dashboard/')
         else:
             print user_form.errors         
     else:
@@ -50,7 +54,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/leialater/')
+                return HttpResponseRedirect('/leialater/dashboard/')
             else:
                 return HttpResponse("Your Account is disabled.")
         else:
@@ -64,5 +68,28 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/leialater/')
+
+def add_url(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        form = BookmarkForm(request.POST)
+        if form.is_valid():
+            bookmark = form.save(commit=False)
+            try:
+                cat = Category.objects.get(name="Undefined")
+                bookmark.category = cat
+            except Category.DoesNotExist:
+                return render_to_response('leialater/add_url.html', {}, context)
+            
+            bookmark.save()
+            return dashboard(request)
+        else:
+            print form.errors
+    else:
+        form = BookmarkForm()
+        
+    return render_to_response( 'leialater/add_url.html',
+        {'form' : form}, context)    
+    
     
 
