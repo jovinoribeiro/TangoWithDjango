@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 import leialater
+import ranchomirage
 
 
 urlpatterns = patterns('',
@@ -12,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^rango/', include('rango.urls')),
     url(r'^leialater/', include('leialater.urls')),
+    url(r'^ranchomirage/', include('ranchomirage.urls')),
 )
 
 if settings.DEBUG:
