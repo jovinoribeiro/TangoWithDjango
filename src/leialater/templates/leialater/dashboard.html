@@ -33,6 +33,11 @@
 				<li class="b_url"><a href="{{ bookmark.url }}" target="_blank">{{ bookmark.url }}</a></li>
 				<li class="b_summary"><span>Summary:</span> {{ bookmark.summary }}</li>
 				<li class="b_date">Date Added: {{ bookmark.date }}</li>
+				<li>
+					<a href="/leialater/edit_bookmark/{{ bookmark.id }}">
+						<button class="btn btn-primary">Edit</button>
+					</a>
+				</li>
 			</ul>
 			<hr />
 		</div>

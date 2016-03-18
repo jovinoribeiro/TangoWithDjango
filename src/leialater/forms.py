@@ -15,7 +15,6 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
         
-
 class BookmarkForm(forms.ModelForm):
     #===========================================================================
     # category = forms.CharField(max_length=128, help_text="Please enter the category name")
@@ -24,7 +23,7 @@ class BookmarkForm(forms.ModelForm):
     url = forms.URLField(max_length=200, help_text="Please enter the url of your link")
     summary = forms.CharField(max_length=500, help_text="Please enter a summary of your link")
     class Meta:
-        model = Bookmark
+        model = Bookmark()
         fields = ('title', 'url', 'summary')
         
 #===============================================================================

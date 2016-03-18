@@ -1,13 +1,39 @@
+
+
+from random import randint
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template.context import RequestContext
+from django.views.generic.edit import UpdateView
+from django.views.generic.list import ListView
 
 from leialater.forms import UserForm, BookmarkForm
 from leialater.models import Category, Bookmark
-from rango.forms import UserProfileForm
 
+def launcher(request, new_crid=None):
+    context = RequestContext(request)
+    context_dict = {'new_crid' : new_crid}
+    return render_to_response('leialater/launcher.html', context_dict, context)
+
+def new_crid(request):
+    env = request.POST['env']
+    redirect_url = reverse('launcher', kwargs={'new_crid' : randint(100, 1000)})
+    return HttpResponseRedirect(redirect_url)
+
+class UpdateBookmarkView(UpdateView):
+    model = Bookmark
+    template_name = 'edit_bookmark.html'
+    
+    def get_success_url(self):
+        return reverse('bookmark_list')
+
+class BookmarkView(ListView):
+    model = Bookmark
+    template_name = 'bookmark_list.html'
 
 def index(request):
     context = RequestContext(request)
@@ -69,7 +95,7 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/leialater/')
 
-def add_url(request):
+def add_url(request, bk_id=None):
     context = RequestContext(request)
     if request.method == 'POST':
         form = BookmarkForm(request.POST)
@@ -86,7 +112,12 @@ def add_url(request):
         else:
             print form.errors
     else:
-        form = BookmarkForm()
+        if bk_id is None:
+            form = BookmarkForm()
+        else:
+            bookmark = Bookmark.objects.get(id=bk_id)
+            form = BookmarkForm(instance=bookmark)
+            
         
     return render_to_response( 'leialater/add_url.html',
         {'form' : form}, context)    

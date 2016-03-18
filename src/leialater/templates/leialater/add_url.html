@@ -13,24 +13,24 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-6">
 				<form id="login_form" method="post" action="/leialater/add_url/">
+					{% csrf_token %}		  
 					<div class="errorlist">
 							{{ form.errors }}
 					</div>
-					{% csrf_token %}		  
 					<div class="form-group">
 					    <label for="title">Title</label>
-					    <input name="title" type="text" class="form-control" 
+					    <input name="title" type="text" class="form-control" value="{{form.title.value}}"
 					    	id="title" placeholder="Enter Your Title">
 				  	</div>
 					<div class="form-group">
 					    <label for="url">Url</label>
-					    <input name="url" type="text" class="form-control" 
+					    <input name="url" type="text" class="form-control" value="{{form.url.value}}"
 					    	id="url" placeholder="Enter Your URL">
 				  	</div>
 				  	<div class="form-group">
 					    <label for="summary">Summary</label>
 					    <textarea name="summary" class="form-control" 
-					    	id="summary" placeholder="Enter Your Summary" rows="3"></textarea>
+					    	id="summary" placeholder="Enter Your Summary" rows="3">{{form.summary.value}}</textarea>
 				  	</div>				  					  	
 				  	<button type="submit" class="btn btn-primary">Submit</button>
 					
