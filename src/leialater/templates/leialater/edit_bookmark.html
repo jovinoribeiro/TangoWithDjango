@@ -1,0 +1,28 @@
+{% extends 'base_front_page.html' %}
+{% load staticfiles %}
+{% block title %} Home{% endblock %}
+
+{% block body_block %}
+<div class="container">
+	<div class="row text-center">
+		<div class="col-sm-12 col-md-6">
+        	
+        	<ul>
+			  {% for contact in object_list %}
+			    <li class="contact">{{ contact.url }}
+			     
+			    
+			    </li>
+			  {% endfor %}
+			</ul>
+      	</div>	   	
+	
+
+	</div>
+	<div style="clear:both;"></div>
+	<div class="row">
+		<div class="col-sm-12 col-md-6">
+	</div>
+</div>
+{% endblock %} 
+	

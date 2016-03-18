@@ -1,0 +1,38 @@
+{% extends 'base_leialater.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+	        	<h1>Launcher</h2>
+	      	</div>		
+		</div>
+		<div style="clear:both;"></div>
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+			
+			<form id="new_crid" method="post" action="/leialater/new_crid/">
+				{% csrf_token %}	
+					<h1>Choices</h1>
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-primary active"><input type='radio' name="env" value='PT' checked/>PT</label>
+						<label class="btn btn-primary"><input type='radio' name="env" value='SIT'/>SIT</label>
+						<label class="btn btn-primary"><input type='radio' name="env" value='CAT'/>CAT</label>
+					</div>
+					<button type="submit" class="btn btn-primary">New User</button>
+				
+			</form>
+			<div>
+				<h5>Here's your CRID: <span>{{ new_crid }}</span></h5>
+			</div>
+			<HR />
+			
+				
+      		</div>		
+		</div>
+	</div>
+
+
+	
+{% endblock %}
