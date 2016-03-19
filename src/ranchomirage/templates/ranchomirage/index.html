@@ -10,6 +10,9 @@
 		<meta name="keywords" content="check list" />
 		<meta name="author" content="Codrops" />
 		
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+	
 		<link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}" />
 		<link rel="stylesheet" type="text/css" href="{% static "css/demo.css" %}" />
 		<link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}" />
@@ -17,19 +20,43 @@
 		<script src="{% static "js/modernizr.custom.js" %}"></script>
 	</head>
 	<body>
-		<div class="container">
-			<!-- Top Navigation -->
-			<div class="codrops-top clearfix">
-	<!-- 			<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/SectionSeparators/"><span>Previous Demo</span></a>
-				<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16637"><span>Back to the Codrops Article</span></a></span>
- -->			</div> 
-			<header>
-				<h1>
-					38 MIRAGE COVE
-					<span> CHECK LIST</span>
-				</h1>
-				<p>Please follow this list and have a great stay.</p>	
-			</header>
+
+	<div class="container-fluid">
+      		<div class="row text-center">
+	        	<div class="col-sm-12 col-md-12 main">
+					<h1>38 MIRAGE COVE</h1>
+					<div class="col-sm-12 col-md-12 main">
+						<img style="margin: 0 auto;" class="img-responsive" src="https://lh3.googleusercontent.com/Yc5lgJZPng9GfZenIZkoZefBz5CPx_gddCpatyrJSrcIxLAdXkThRUdJNTdtVy6MIH12R2qRTnImhusGF5jg8oPCaFRVuyoVWwzepXAQkFwfrrPsNls0yHKRpcpyn22rMn19SUYU_o44BS4jB_3SB2p1j0TzN-H0KDbzuW1cNQ-tVqfbKz59znBbomz5ZGJN-dAWRIEx1BHKW8SAeFV16_pOzB2sRg5gxQe-F57rS9q3730b4odiW_zZ7ctPIOS3KRc-5yxN0unf07Gnxk_ZsP1f1UZhwqWd3o8QRXgNfULhHHetemnOsfWic5bjsC0naGStUdIahN82k6VDgtGdID29YLdZiaYWN7I5FrWXKOBdZz9oShiEgu84OfvKfxVuGwSOToh1Xbyc7Ur5Kuh5TyxAdaS0q034nIcFRJU_xMF3N9X3mpL40nn3pK4AmSU0pIVbAHlWPxPEcNZevdn5nk5cp1BpV3q-_JOdIJMjufgY3nV3ahy-UuOfbZK6uzspt1saHy9GlhHHAPkKbnAF1msqwaRO8hYL8Jd8Jm5MkpPf8IpUnzPnFXgmT0LGPKcjVBW2=w800-h542-no"/>
+					</div>
+				
+					<h3> CHECK LIST</h3>
+					<p>Please follow this list and have a great stay.</p>	
+				</div>
+			</div>
+		
+<!-- 			<div>
+				<button id="resetAll">Uncheck All</button>
+			</div>
+			<div>
+				<button id="checkAll">Check All</button>
+			</div> -->
+	<!-- 		<div>
+				<button id="showAll">All</button>
+			</div>
+			<div>
+				<button id="showActive">Active</button>
+			</div>
+			<div>
+				<button id="showCompleted">Completed</button>
+			</div>
+			
+			<ul id="filters">
+				<li>All</li>
+				<li>Active</li>
+				<li>Completed</li>
+			</ul>
+			 -->
+			 
 			<section>
 				<!-- <form class="ac-custom ac-checkbox ac-boxfill " autocomplete="off"> -->
 				<form class="ac-custom ac-checkbox ac-boxfill" autocomplete="off">
@@ -127,6 +154,62 @@
 				<p><a href="http://tympanus.net/Development/CreativeButtons/">Creative Button Styles</a></p>
 			</section> -->
 		</div><!-- /container -->
+		
+		    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+    
 		<script src="{% static "js/svgcheckbx.js" %}"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<script>
+	
+		$(document).ready(function() {
+		
+			$('#resetAll').click(function() {
+				  $('input[type=checkbox]').each(function() {
+					 // alert('uncheck'); 
+					  $(this).prop('checked', false);
+				    	reset( this );
+				    	
+				}); 
+			});
+			
+			$('input[type=checkbox]').click(function() {
+				/* alert('clicked'); */
+			});
+			
+			$('#checkAll').click(function() {
+				  $('input[type=checkbox]').each(function() {
+					  //alert('check');
+				    	draw( this, 'boxfill' );
+					   $(this).prop('checked', true);
+				}); 
+			});
+			
+			$('#showAll').click(function() {
+				
+			});
+			
+			$('#showActive').click(function() {
+				
+			});
+			
+			
+			$('#showCompleted').click(function() {
+				
+			});
+			
+		});
+			
+		
+	</script>	
+		
+		
 	</body>
 </html>
